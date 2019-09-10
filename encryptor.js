@@ -24,26 +24,34 @@ $('#poli').click(function () {
     method = 'poli';
 });
 
-$('#encrypt').click(function () {
+$('.send').click(function (ele) {
 
     if (validate()) {
 
         let value1 = $('#value1').val();
         let value2 = $('#value2').val();
         let radioValue = $("input[name='N']:checked").val();
+        let type = $(this).text();
+        let text = '';
 
-        let data = normalizeValue(radioValue, value1);
-        let newAbc = createAbc(data);
-        let text = changeValues(data['abc'], newAbc, value2);
+        switch (method) {
 
+            case 'cesar':
+                text = 'Aun no esta implementado';
+                break;
+
+            case 'mono':
+                text = monoEncryptor(radioValue, value1, value2, type);
+                break;
+
+            default://poli
+                text = 'Aun no esta implementado';
+                break;
+        }
+
+        $('#titleText').text('The encoded text is: ');
         $('#text').text(text);
-
     }
-
-});
-
-$('#decrypt').click(function () {
-
 });
 
 function validate() {
@@ -129,4 +137,13 @@ function changeValues(abc, newAbc, text) {
     })
 
     return newText;
+}
+
+function monoEncryptor(radioValue, value1, value2, type) {
+
+    let data = normalizeValue(radioValue, value1);
+    let newAbc = createAbc(data);
+    let text = (type == 'Encrypt') ? changeValues(data['abc'], newAbc, value2) : changeValues(newAbc, data['abc'], value2);
+
+    return text;
 }
