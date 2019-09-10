@@ -23,22 +23,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse text-right" id="menu">
-      <ul class="nav navbar-nav ml-auto nav-pills">
+      <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Cesar</a>
+          <a class="nav-link active" id="cesar">César</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">xxx</a>
+          <a class="nav-link" id="mono">Mono-Alfabéticos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">xxxx</a>
+          <a class="nav-link" id="poli">Poli-Alfabéticos</a>
         </li>
       </ul>
     </div>
   </nav>
 
-
-
+  <div class="container" style="margin-top: 56px; padding: 10px">
+    <label id="lValue1" for="value1">Spaces</label>
+    <input id="value1" type="text">
+    <label id="lValue2" for="value2">Text</label>
+    <input id="value2" type="text">
+    <button id="encrypt">Encrypt</button>
+    <button id="decrypt">Decrypt</button>
+    <strong>
+      <p id="text"></p>
+    </strong>
+  </div>
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
