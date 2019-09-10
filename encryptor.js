@@ -37,7 +37,7 @@ $('.send').click(function (ele) {
         switch (method) {
 
             case 'cesar':
-                text = 'Aun no esta implementado';
+                text = cesarEncryptor(radioValue, value1, value2, type);
                 break;
 
             case 'mono':
@@ -144,6 +144,15 @@ function monoEncryptor(radioValue, value1, value2, type) {
     let data = normalizeValue(radioValue, value1);
     let newAbc = createAbc(data);
     let text = (type == 'Encrypt') ? changeValues(data['abc'], newAbc, value2) : changeValues(newAbc, data['abc'], value2);
+
+    return text;
+}
+
+function cesarEncryptor(radioValue, value1, value2, type) {
+
+    let abc = (radioValue == 'withN') ? 'abcdefghijklmnñopqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+    let newAbc = abc.substr(value1) + abc.substr(0, value1);
+    let text = (type == 'Encrypt') ? changeValues(abc, newAbc, value2) : changeValues(newAbc, abc, value2);
 
     return text;
 }
